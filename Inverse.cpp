@@ -1,13 +1,15 @@
 #include "Inverse.h"
 
 Matrix2x2 Inverse(Matrix2x2 matrix) {
-	if (matrix.m[0][0] * matrix.m[1][1] - matrix.m[0][1] * matrix.m[1][0]==0) {
+	// 行列式が0なら逆行列は存在しないので0除算を発生させないためそのままの値を返す
+	if (matrix.m[0][0] * matrix.m[1][1] - matrix.m[0][1] * matrix.m[1][0] == 0) {
 		return matrix;
 	}
-	
-	float determinant = 1 /( matrix.m[0][0] * matrix.m[1][1] - matrix.m[0][1] * matrix.m[1][0]);
+
+	// 行列式の作成
+	float determinant = 1 / (matrix.m[0][0] * matrix.m[1][1] - matrix.m[0][1] * matrix.m[1][0]);
 	Matrix2x2 result;
-	
+
 	result.m[0][0] = determinant * matrix.m[1][1];
 	result.m[0][1] = determinant * -matrix.m[0][1];
 	result.m[1][0] = determinant * -matrix.m[1][0];
@@ -18,12 +20,13 @@ Matrix2x2 Inverse(Matrix2x2 matrix) {
 };
 
 Matrix3x3 Inverse(Matrix3x3 matrix) {
-
+	// 行列式が0なら逆行列は存在しないので0除算を発生させないためそのままの値を返す
 	if (matrix.m[0][0] * matrix.m[1][1] * matrix.m[2][2] + matrix.m[0][1] * matrix.m[1][2] * matrix.m[2][0] + matrix.m[0][2] * matrix.m[1][0] * matrix.m[2][1]
 		- matrix.m[0][2] * matrix.m[1][1] * matrix.m[2][0] - matrix.m[0][1] * matrix.m[1][0] * matrix.m[2][2] - matrix.m[0][0] * matrix.m[1][2] * matrix.m[2][1] == 0) {
 		return matrix;
 	}
 
+	// 行列式の作成
 	float determinant = 1 / (matrix.m[0][0] * matrix.m[1][1] * matrix.m[2][2] + matrix.m[0][1] * matrix.m[1][2] * matrix.m[2][0] + matrix.m[0][2] * matrix.m[1][0] * matrix.m[2][1]
 		- matrix.m[0][2] * matrix.m[1][1] * matrix.m[2][0] - matrix.m[0][1] * matrix.m[1][0] * matrix.m[2][2] - matrix.m[0][0] * matrix.m[1][2] * matrix.m[2][1]);
 

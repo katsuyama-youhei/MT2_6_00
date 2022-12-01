@@ -11,12 +11,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Novice::Initialize(kWindowTitle, 1280, 720);
 
 	// キー入力結果を受け取る箱
-	char keys[256] = {0};
-	char preKeys[256] = {0};
+	char keys[256] = { 0 };
+	char preKeys[256] = { 0 };
 
 	Matrix2x2 m1 = {
 	1.0f,2.0f,
-	3.0f,4.0f };
+	3.0f,4.0f
+	};
 
 	Matrix3x3 m2 = {
 		1.0f,2.0f,0.0f,
@@ -51,7 +52,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓描画処理ここから
 		///
 
-		MatrixScreenPrintf(0,kRowHeight*0,inverseM1);
+		MatrixScreenPrintf(0, kRowHeight * 0, inverseM1);
 		MatrixScreenPrintf(0, kRowHeight * 2 + 10, inverseM2);
 
 		///
